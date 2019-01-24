@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   password: String,
-  permissionLevel: Number
+  permissionLevel: {type: Number, default: 1}
 })
 
 module.exports = mongoose.model('Users', userSchema, 'users')
