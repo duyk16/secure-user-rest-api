@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 
-const usersRoute = require('./routes/users')
+const usersRoute = require('./routes/users.route')
 
 // Connect DB
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true}, (err) => {
@@ -17,6 +17,6 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true}, (err) => {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use('/api/users', usersRoute)
+app.use('/api/v1/users', usersRoute)
 
 app.listen(port, () => {console.log(`Listening on port ${port}...`)})
