@@ -82,3 +82,8 @@ exports.patchById = async (req, res) => {
   }
   
 }
+exports.removeById = (req, res) => {
+  UserModel.findByIdAndRemove({_id: req.params.id})
+    .then((data) => res.status(204).send({status: 'Delete success', data}))
+    .catch((error) => res.status(400).send({error: 'Delete fail', error}))
+}
