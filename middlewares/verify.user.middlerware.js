@@ -32,3 +32,25 @@ exports.isPasswordAndUserMatch = async (req, res, next) => {
     return res.status(403).send({error: 'Error does not define'})
   }
 }
+
+exports.hasRegiterFields = (req, res, next) => {
+  if (
+    req.body.firstName &&
+    req.body.lastName &&
+    req.body.email &&
+    req.body.password
+  ) return next()
+
+  return res.status(400).send({
+    error: "All field are required"
+  })
+}
+
+exports.hasUserExist = async(req, res, next) => {
+  let user = await UserModel.findOne({email: req.body.email})
+  if (user) return res.status(400).send({
+    error: 'Email was registed before'
+  })
+
+  return next()
+}

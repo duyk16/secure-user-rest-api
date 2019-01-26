@@ -5,31 +5,35 @@ const userController = require('../controllers/users.controller')
 const authorizationController = require('../controllers/authorization.controller')
 
 const verifyUserMiddleware = require('../middlewares/verify.user.middlerware')
-const authVerifyMiddleware = require('../middlewares/auth.validation.middleware')
+const authUserMiddleware = require('../middlewares/auth.user.middleware')
 
 
 
-route.post('/', userController.createUser)
+route.post('/', [
+  verifyUserMiddleware.hasRegiterFields,
+  verifyUserMiddleware.hasUserExist,
+  userController.createUser
+])
 route.get('/', [
-  authVerifyMiddleware.validJWTNeeded,
-  authVerifyMiddleware.minLevelRequired(2), // 2 = Mod
+  authUserMiddleware.validJWTNeeded,
+  authUserMiddleware.minLevelRequired(2), // 2 = Mod
   userController.getListUsers,
 ])
 route.get('/:id', [
-  authVerifyMiddleware.validJWTNeeded, 
-  authVerifyMiddleware.minLevelRequired(1), // 1 = User
-  authVerifyMiddleware.sameId,
+  authUserMiddleware.validJWTNeeded, 
+  authUserMiddleware.minLevelRequired(1), // 1 = User
+  authUserMiddleware.sameId,
   userController.getById
 ])
 route.patch('/:id', [
-  authVerifyMiddleware.validJWTNeeded,
-  authVerifyMiddleware.minLevelRequired(1), 
+  authUserMiddleware.validJWTNeeded,
+  authUserMiddleware.minLevelRequired(1), 
   userController.patchById,
 ])
 route.delete('/:id', [
-  authVerifyMiddleware.validJWTNeeded,
-  authVerifyMiddleware.minLevelRequired(3), // 3 = Admin
-  authVerifyMiddleware.sameId,
+  authUserMiddleware.validJWTNeeded,
+  authUserMiddleware.minLevelRequired(3), // 3 = Admin
+  authUserMiddleware.sameId,
   userController.removeById
 ])
 
