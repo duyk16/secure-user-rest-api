@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 exports.validJWTNeeded = (req, res, next) => {
-  let authorization = req.headers['authorization']
+  let authorization = req.headers.authorization
   if (!authorization) return res.status(401).send()
 
   try {
