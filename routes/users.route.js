@@ -29,6 +29,7 @@ route.patch('/:id', [
 route.delete('/:id', [
   authVerifyMiddleware.validJWTNeeded,
   authVerifyMiddleware.minLevelRequired(3), // 3 = Admin
+  authVerifyMiddleware.sameId,
   userController.removeById
 ])
 
