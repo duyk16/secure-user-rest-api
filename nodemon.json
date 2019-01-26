@@ -1,6 +1,0 @@
-{
-  "env": {
-    "MONGO_URL": "mongodb://duyk16:duy21047600@ds211625.mlab.com:11625/secure-rest-api",
-    "JWT_SECRET": "duy"
-  }
-}
