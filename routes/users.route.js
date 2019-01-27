@@ -8,7 +8,6 @@ const verifyUserMiddleware = require('../middlewares/verify.user.middlerware')
 const authUserMiddleware = require('../middlewares/auth.user.middleware')
 
 
-
 route.post('/', [
   verifyUserMiddleware.hasRegiterFields,
   verifyUserMiddleware.hasUserExist,

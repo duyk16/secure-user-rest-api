@@ -13,7 +13,6 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.6",
-    "uuid": "^3.3.2"
+    "mongoose": "^5.4.6"
   }
 }
