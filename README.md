@@ -17,3 +17,7 @@ Base API: `http://localhost:3000/api/v1`
 | GET    | /user/:id           |                                                            | Get user by ID |
 | PATCH  | /user/:id           | {id: ..., password: ...}                                   | Change user password |
 | DELETE | /user/:id           | {id: ...}                                                  | Delete user by ID |
+
+
+@Monkey
+Highly appreciated.
